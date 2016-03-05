@@ -15,6 +15,10 @@ body {
     background: linear-gradient(#1c2836, #233e5f); /* Standard syntax (must be last) */
 }
 
+a {
+    color: #ffffff;
+}
+
 article.facebook-entry {
     background: $secondary-color url(../img/bg_facebook_post.png) no-repeat;
     width: 297px;

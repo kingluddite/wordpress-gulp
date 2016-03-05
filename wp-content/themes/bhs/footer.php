@@ -41,8 +41,6 @@
         <footer>
             <p>Copyright Behavioral Health Services &copy; 2011. All Rights Reserved.</p>
         </footer>
-        <script src="<?php bloginfo('template_url'); ?>/node_modules/jquery/dist/jquery.min.js"></script>
-        <script src="<?php bloginfo('template_url'); ?>/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <?php wp_footer(); ?>
     </body>
 </html>
