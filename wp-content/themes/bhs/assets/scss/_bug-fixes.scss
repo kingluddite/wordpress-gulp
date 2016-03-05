@@ -1,0 +1,10 @@
+/* http://haslayout.net/css-tuts/Removing-Dotted-Border-on-Clicked-Links ie9 dotted lines */
+a {
+    outline: 0;
+}
+
+/* Disable Highlight border focused on form controls in chrome, safari, android and iPhone browser  */
+
+*:focus {
+    outline: none;
+}

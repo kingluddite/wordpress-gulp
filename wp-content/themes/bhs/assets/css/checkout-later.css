@@ -1,0 +1,1027 @@
+/* table of contents*/
+/*!^peh2^ Start of Custom Styles */
+/*!^peh2^ About Page Styles */
+/* colors 
+orangish links - #f99b15
+newsletter orange heading - #b15b09
+orange small date font column two - #f89915
+
+blackish heading for aside - #010101
+
+gray - #cecccc
+gray for .columnOne - #6c6762
+gray author - #c2c1c0
+light gray boxes - #f2f1f1 (looks dark on pc's)
+dark gray heading text - #484747
+darker gray links for breadcrumbs - #979899
+facebook gray paragraph text - #767474
+
+blue links - #002446
+
+
+*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none; }
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+del {
+  text-decoration: line-through; }
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
+
+input, select {
+  vertical-align: middle; }
+
+/**
+ * Font normalization inspired by YUI Library's fonts.css: developer.yahoo.com/yui/
+ */
+body {
+  font: 13px/1.231 sans-serif;
+  *font-size: small; }
+
+/* Hack retained to preserve specificity */
+select, input, textarea, button {
+  font: 99% sans-serif; }
+
+/* Normalize monospace sizing:
+   en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome */
+pre, code, kbd, samp {
+  font-family: monospace, sans-serif; }
+
+/**
+ * Minimal base styles.
+ */
+/* Always force a scrollbar in non-IE */
+html {
+  overflow-y: scroll; }
+
+/* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active {
+  outline: none; }
+
+ul, ol {
+  margin-left: 2em; }
+
+ol {
+  list-style-type: decimal; }
+
+/* Remove margins for navigation lists */
+nav ul, nav li {
+  margin: 0;
+  list-style: none;
+  list-style-image: none; }
+
+small {
+  font-size: 85%; }
+
+strong, th {
+  font-weight: bold; }
+
+td {
+  vertical-align: top; }
+
+/* Set sub, sup without affecting line-height: gist.github.com/413930 */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+pre {
+  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 15px; }
+
+textarea {
+  overflow: auto; }
+
+/* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+.ie6 legend, .ie7 legend {
+  margin-left: -7px; }
+
+/* Align checkboxes, radios, text inputs with their label by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input[type="radio"] {
+  vertical-align: text-bottom; }
+
+input[type="checkbox"] {
+  vertical-align: bottom; }
+
+.ie7 input[type="checkbox"] {
+  vertical-align: baseline; }
+
+.ie6 input {
+  vertical-align: text-bottom; }
+
+/* Hand cursor on clickable input elements */
+label, input[type="button"], input[type="submit"], input[type="image"], button {
+  cursor: pointer; }
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {
+  margin: 0; }
+
+/* Colors for form validity */
+input:invalid, textarea:invalid {
+  border-radius: 1px;
+  -moz-box-shadow: 0px 0px 5px red;
+  -webkit-box-shadow: 0px 0px 5px red;
+  box-shadow: 0px 0px 5px red; }
+
+.no-boxshadow input:invalid, .no-boxshadow textarea:invalid {
+  background-color: #f0dddd; }
+
+/* These selection declarations have to be separate
+   No text-shadow: twitter.com/miketaylr/status/12228805301
+   Also: hot pink! */
+::-moz-selection {
+  background: #FF5E99;
+  color: #fff;
+  text-shadow: none; }
+
+::selection {
+  background: #FF5E99;
+  color: #fff;
+  text-shadow: none; }
+
+/* j.mp/webkit-tap-highlight-color */
+a:link {
+  -webkit-tap-highlight-color: #FF5E99; }
+
+/* Make buttons play nice in IE:
+   www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
+button {
+  width: auto;
+  overflow: visible; }
+
+/* Bicubic resizing for non-native sized IMG:
+   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
+.ie7 img {
+  -ms-interpolation-mode: bicubic; }
+
+/**
+ * You might tweak these..
+ */
+body, select, input, textarea {
+  /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */
+  color: #444;
+  /* Set your base font here, to apply evenly */
+  /* font-family: Georgia, serif;  */ }
+
+/* Headers (h1, h2, etc) have no default font-size or margin; define those yourself */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold; }
+
+a, a:active, a:visited {
+  color: #173f6b;
+  text-decoration: none; }
+
+a:hover {
+  color: #173f6b;
+  text-decoration: none; }
+
+/**
+ * Primary styles
+ *
+ * Author: PEH2
+ */
+/* color scheme */
+/* 
+    background: #233e5f
+		wrapper: #ffffff
+		miscTop: #343333
+		
+*/
+/*!^peh2^ Start of Custom Styles */
+/* general html tags */
+body {
+  font: 62.5%/1.6em Arial, Helvetica, sans-serif;
+  background: #233e5f url(../images/body_bg_grad.jpg) repeat-x; }
+
+a {
+  outline: 0; }
+
+/* http://haslayout.net/css-tuts/Removing-Dotted-Border-on-Clicked-Links ie9 dotted lines */
+/* Disable Highlight border focused on form controls in chrome, safari, android and iPhone browser  */
+*:focus {
+  outline: none; }
+
+#wrapper {
+  width: 960px;
+  margin: 0 auto;
+  font-size: 1.2em; }
+
+header {
+  position: relative;
+  background-color: #666666; }
+
+#miscItems {
+  height: 56px;
+  background-color: #0c2745;
+  position: relative; }
+
+#searchContainer {
+  background-image: url(../images/bg_box.png);
+  background-position: right top;
+  background-repeat: no-repeat;
+  float: right;
+  height: 37px;
+  margin: 14px 210px 0 0;
+  padding: 0;
+  width: 258px; }
+
+#searchContainer #search_input {
+  background-color: transparent;
+  border: medium none;
+  color: #999999;
+  float: left;
+  font-size: 0.9em;
+  height: auto;
+  margin: 10px 5px 0 28px;
+  width: 185px; }
+
+#searchContainer #search_submit {
+  margin: 5px 0 0 10px;
+  width: 25px; }
+
+#topNav {
+  font-size: .9em;
+  padding-left: 95px;
+  width: 347px; }
+
+#topNav li {
+  padding-top: 25px; }
+
+#topNav span {
+  padding: 0 10px; }
+
+#topNav a {
+  color: #fff;
+  text-decoration: none; }
+
+#facebookIcon {
+  padding: 12px 10px 0 15px; }
+
+#donate {
+  position: absolute;
+  top: 17px;
+  right: 0; }
+
+#logo {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: 99; }
+
+header nav {
+  height: 72px;
+  background: #666666 url(../images/header_bg.png) no-repeat; }
+
+nav ul li, #topNav li {
+  list-style: none;
+  float: left;
+  color: #fff; }
+
+/* where does the nav start? */
+nav ul {
+  /*	position: absolute;
+  top: 27px;
+  left: 150px;*/
+  font-size: 11px; }
+
+nav #navHome a {
+  position: absolute;
+  left: 105px;
+  top: 75px;
+  display: block;
+  width: 100px;
+  padding: 10px;
+  text-align: center; }
+
+nav #navAbout a {
+  position: absolute;
+  left: 240px;
+  top: 75px;
+  display: block;
+  width: 100px;
+  padding: 10px;
+  text-align: center; }
+
+nav #navService a {
+  position: absolute;
+  left: 385px;
+  top: 75px;
+  display: block;
+  width: 100px;
+  padding: 10px;
+  text-align: center; }
+
+nav #navAddict a {
+  position: absolute;
+  left: 505px;
+  top: 75px;
+  display: block;
+  width: 160px;
+  padding: 10px;
+  text-align: center; }
+
+.ie9 nav #navAddict a {
+  left: 535px; }
+
+nav #navAppoint a {
+  position: absolute;
+  left: 655px;
+  top: 75px;
+  display: block;
+  width: 150px;
+  padding: 10px;
+  text-align: center; }
+
+.ie9 nav #navAppoint a {
+  left: 673px; }
+
+nav #navContact a {
+  position: absolute;
+  left: 790px;
+  top: 75px;
+  display: block;
+  width: 150px;
+  padding: 10px;
+  text-align: center; }
+
+nav a {
+  color: #515152;
+  text-decoration: none;
+  display: block; }
+
+nav a:hover {
+  color: #d4740d;
+  /*font-weight: bold;*/
+  letter-spacing: 0; }
+
+#pageDivider {
+  background: #fff url(../images/bg_div_header.jpg) no-repeat;
+  height: 374px;
+  position: relative; }
+
+#pageDivider h2 {
+  background: transparent url(../images/header_blurb.png) no-repeat;
+  width: 680px;
+  height: 78px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 0; }
+
+aside {
+  width: 291px;
+  margin-right: 12px;
+  float: right;
+  /*height: 294px;*/ }
+
+aside h2#since1973 {
+  background: transparent url(../images/heading_since_1973.png) no-repeat;
+  width: 152px;
+  height: 42px;
+  margin: 16px 10px 0 140px;
+  padding: 10px;
+  position: inherit; }
+
+#mainContent {
+  width: 960px;
+  float: left;
+  line-height: 1.4em; }
+
+.home #mainContent h1 {
+  background: #fff url(../images/heading_welcome_bhs.png) no-repeat;
+  color: #000;
+  width: 623px;
+  height: 47px;
+  margin-left: 30px;
+  margin-top: 30px; }
+
+#mainContent #colOne {
+  width: 290px;
+  float: left;
+  padding-left: 30px; }
+
+#mainContent #colTwo {
+  width: 290px;
+  float: left;
+  padding-left: 25px; }
+
+#mainContent p {
+  padding: 10px 0;
+  color: #6c6762; }
+
+#facebookEntry {
+  background: #fff url(../images/bg_facebook_post.png) no-repeat;
+  width: 297px;
+  height: 321px;
+  float: right;
+  margin-top: 5px; }
+
+#facebookEntry h3 {
+  background: #fff url(../images/header_facebook.png) no-repeat;
+  width: 293px;
+  height: 43px;
+  margin-top: 50px; }
+
+#facebookEntry h4 {
+  color: #282424;
+  padding-left: 30px;
+  padding-top: 5px; }
+
+#facebookEntry h5 {
+  color: #f9a634;
+  padding-left: 30px;
+  padding-top: 10px; }
+
+#facebookEntry h5 span {
+  color: #c2c1c0; }
+
+#facebookEntry p {
+  padding-left: 30px;
+  padding-top: 10px;
+  font-size: 11px;
+  padding-right: 30px; }
+
+footer {
+  color: #fff;
+  font-size: 11px; }
+
+footer a:link {
+  color: #fff;
+  text-decoration: none; }
+
+footer a:hover {
+  text-decoration: underline;
+  color: #fff; }
+
+#footerTop {
+  -webkit-box-shadow: 5px 5px 25px 0px #000000;
+  -moz-box-shadow: 5px 5px 25px 0px #000000;
+  box-shadow: 5px 5px 25px 0px #000000;
+  background: url("../images/top_footer_bg.png") no-repeat;
+  clear: both;
+  height: 139px; }
+
+#footerTop a {
+  color: #fff; }
+
+footer p {
+  text-align: center;
+  font-size: 10px;
+  margin-top: 5px; }
+
+#footerTop div {
+  float: left; }
+
+#footerTop .aboutUsFooter {
+  padding-left: 20px; }
+
+#footerTop .servicesFooter {
+  padding-left: 80px; }
+
+#footerTop .waysToGetInvolvedFooter {
+  padding-left: 50px; }
+
+h2#aboutUs {
+  width: 166px;
+  height: 30px;
+  background-image: url(../images/bg_about_us.png);
+  background-repeat: no-repeat; }
+
+h2#services {
+  width: 166px;
+  height: 30px;
+  background-image: url(../images/bg_heading_services.jpg);
+  background-repeat: no-repeat; }
+
+h2#waysToGetInvolved {
+  width: 166px;
+  height: 30px;
+  background-image: url(../images/bg_heading_ways_tgi.png);
+  background-repeat: no-repeat; }
+
+#accred {
+  padding-left: 40px; }
+
+#accred img {
+  padding: 0 4px; }
+
+#adpCert {
+  margin-top: 10px; }
+
+/*!^peh2^ About Page Styles */
+#mainContent hgroup h5 {
+  color: #010101;
+  font-size: 12px;
+  font-weight: bold; }
+
+.columnTwo a, aside a {
+  text-decoration: underline; }
+
+#mainNav .current {
+  color: #f99b15;
+  font-weight: bold; }
+
+#contentContainer {
+  background-color: #fff; }
+
+.myAboutPage #mainContent h1 {
+  background: url(../images/about_us_heading.png) no-repeat;
+  width: 107px;
+  height: 21px;
+  float: left;
+  margin-bottom: 10px; }
+
+.myAboutPage #mainContent h2 {
+  font-size: 16px;
+  color: #f99b15;
+  font-weight: normal;
+  padding-top: 10px; }
+
+#mainContent .breadcrumbs {
+  float: right;
+  margin: 30px 25px 0 0; }
+
+#mainContent .breadcrumbs li {
+  float: left;
+  list-style: none;
+  padding-right: 2px; }
+
+#mainContent .breadcrumbs li a {
+  color: #f99b15;
+  font-size: 11px; }
+
+#mainContent .breadcrumbs li a.currentPage {
+  color: #979899; }
+
+.myAboutPage aside, .getInvolved aside {
+  float: left;
+  width: 242px;
+  margin: 0;
+  padding: 15px; }
+
+.myAboutPage #mainContent, .getInvolved #mainContent {
+  float: right;
+  width: 680px; }
+
+aside hr {
+  margin: 25px 0; }
+
+#otherContent {
+  padding-top: 15px; }
+
+#contentContainer {
+  padding-bottom: 25px; }
+
+.columnOne {
+  width: 390px;
+  float: left; }
+
+.columnTwo {
+  width: 225px;
+  float: right;
+  padding-right: 40px; }
+
+.columnTwo hgroup h4 {
+  font-size: 11px;
+  color: #f89915;
+  font-weight: normal;
+  padding-top: 5px; }
+
+.columnTwo p {
+  font-size: 11px;
+  color: #767474;
+  font-weight: normal; }
+
+.columnTwo hgroup h4 span.author {
+  font-size: 11px;
+  color: #c2c1c0;
+  font-weight: normal;
+  padding-left: 5px; }
+
+.columnTwo #myFacebookEntry {
+  background: none;
+  height: auto; }
+
+.columnTwo #myFacebookEntry h3 {
+  background: transparent url(../images/latest_news_heading.png) no-repeat;
+  width: 238px;
+  height: 46px;
+  margin: 0; }
+
+.columnTwo #myFacebookEntry h4 {
+  padding: 0;
+  margin: 0; }
+
+.columnTwo #myFacebookEntry h5 {
+  padding: 0;
+  margin: 0; }
+
+.columnTwo #myFacebookEntry p {
+  padding: 0;
+  margin: 20px 0 0 0; }
+
+#recentJobPost h3 {
+  background: url(../images/recent_job_post_heading.png) no-repeat;
+  width: 239px;
+  height: 34px; }
+
+#sideNav {
+  margin-top: 15px; }
+
+#sideNav li {
+  float: none;
+  border-bottom: 1px solid #cecccc;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
+#sideNav li a {
+  color: #002446;
+  font-size: 12px;
+  padding-left: 15px; }
+
+#sideNav li a.currentPage {
+  color: #f99b15;
+  font-weight: bold;
+  background: url(../images/subnav_icon.png) no-repeat; }
+
+#sideNav a.pdfPrivacy {
+  float: right; }
+
+.asideBox {
+  background-color: #f2f1f1;
+  border: 1px solid #afafaf;
+  padding: 5px;
+  height: 132px;
+  font-size: 11px;
+  line-height: 1.1em;
+  margin-bottom: 10px; }
+
+.asideBox img {
+  float: left;
+  width: 90px;
+  padding: 0 5px;
+  margin-top: 10px; }
+
+.asideBox p {
+  width: 100px;
+  float: right;
+  margin-top: 10px; }
+
+#getInvolvedSidebarHeading {
+  margin-top: 50px;
+  font-size: 24px;
+  color: #f99b15;
+  font-weight: normal;
+  padding-bottom: 10px; }
+
+#successStoriesSidebarHeading {
+  color: #484747;
+  font-size: 24px;
+  font-weight: normal;
+  padding-bottom: 10px; }
+
+.getInvolved #successStoriesSidebarHeading {
+  color: #484747;
+  font-size: 21px;
+  font-weight: normal;
+  margin-top: 20px; }
+
+/*!^peh2^ Get Involved Page Styles */
+.getInvolved #mainContent h1 {
+  background: url(../images/get_involved_heading.png) no-repeat;
+  width: 152px;
+  height: 31px; }
+
+.getInvolved #mainContent h2 {
+  background: url(../images/your_support_is_vital_to_our_mission.png) no-repeat;
+  width: 359px;
+  height: 30px; }
+
+.getInvolved #mainContent h3 {
+  background: url(../images/make_contribution_today.png) no-repeat;
+  width: 267px;
+  height: 30px; }
+
+.involvedBox {
+  background: url(../images/orange_box.png) no-repeat;
+  width: 157px;
+  height: 158px;
+  float: left; }
+
+/* END OF PEH2 CUSTOM CODE */
+/* all accordion css  */
+/* SpryAccordion.css - version 0.5 - Spry Pre-Release 1.6.1 */
+/* Copyright (c) 2006. Adobe Systems Incorporated. All rights reserved. */
+/* This is the selector for the main Accordion container. For our default style,
+ * we draw borders on the left, right, and bottom. The top border of the Accordion
+ * will be rendered by the first AccordionPanelTab which never moves.
+ *
+ * If you want to constrain the width of the Accordion widget, set a width on
+ * the Accordion container. By default, our accordion expands horizontally to fill
+ * up available space.
+ *
+ * The name of the class ("Accordion") used in this selector is not necessary
+ * to make the widget function. You can use any class name you want to style the
+ * Accordion container.
+ */
+.Accordion {
+  border-right: solid 1px #e1dfdf;
+  overflow: hidden; }
+
+/* This is the selector for the AccordionPanel container which houses the
+ * panel tab and a panel content area. It doesn't render visually, but we
+ * make sure that it has zero margin and padding.
+ *
+ * The name of the class ("AccordionPanel") used in this selector is not necessary
+ * to make the widget function. You can use any class name you want to style an
+ * accordion panel container.
+*/
+.AccordionPanel {
+  margin: 0px;
+  padding: 0px; }
+
+/* This is the selector for the AccordionPanelTab. This container houses
+ * the title for the panel. This is also the container that the user clicks
+ * on to open a specific panel.
+ *
+ * The name of the class ("AccordionPanelTab") used in this selector is not necessary
+ * to make the widget function. You can use any class name you want to style an
+ * accordion panel tab container.
+ *
+ * NOTE:
+ * This rule uses -moz-user-select and -khtml-user-select properties to prevent the
+ * user from selecting the text in the AccordionPanelTab. These are proprietary browser
+ * properties that only work in Mozilla based browsers (like FireFox) and KHTML based
+ * browsers (like Safari), so they will not pass W3C validation. If you want your documents to
+ * validate, and don't care if the user can select the text within an AccordionPanelTab,
+ * you can safely remove those properties without affecting the functionality of the widget.
+ */
+.AccordionPanelTab {
+  margin: 0px;
+  cursor: pointer;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  background: transparent url(../images/bg_accordion_tabs_sprite.png) no-repeat left bottom;
+  height: 30px;
+  color: #fff; }
+
+.accordionText {
+  /* this is a cool trick to move text down */
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  /* text-indent doesn't work on block elements, must use padding */
+  padding-left: 30px;
+  padding-top: 5px; }
+
+/* This is the selector for a Panel's Content area. It's important to note that
+ * you should never put any padding on the panel's content area if you plan to
+ * use the Accordions panel animations. Placing a non-zero padding on the content
+ * area can cause the accordion to abruptly grow in height while the panels animate.
+ *
+ * Anyone who styles an Accordion *MUST* specify a height on the Accordion Panel
+ * Content container.
+ *
+ * The name of the class ("AccordionPanelContent") used in this selector is not necessary
+ * to make the widget function. You can use any class name you want to style an
+ * accordion panel content container.
+ */
+.AccordionPanelContent {
+  overflow: auto;
+  margin: 0;
+  padding: 0px;
+  height: 176px;
+  font-size: 11px;
+  /*background: transparent url(../images/bg_open_panel.png) no-repeat;*/ }
+
+.AccordionPanelContent p.firstPar {
+  margin: 15px 0 0 30px; }
+
+.AccordionPanelContent p {
+  padding-top: 15px;
+  margin-left: 30px;
+  color: #363535; }
+
+.AccordionPanelContent p a {
+  color: #363535;
+  text-decoration: underline; }
+
+.AccordionPanelContent img {
+  float: right;
+  margin-top: 30px; }
+
+/* This is an example of how to change the appearance of the panel tab that is
+ * currently open. The class "AccordionPanelOpen" is programatically added and removed
+ * from panels as the user clicks on the tabs within the Accordion.
+ */
+.AccordionPanelOpen .AccordionPanelTab {
+  background-color: #eeeeee;
+  height: 30px;
+  background-image: url(../images/bg_accordion_tabs_sprite.png);
+  background-repeat: no-repeat;
+  background-position: left top; }
+
+/* This is an example of how to change the appearance of the panel tab as the
+ * mouse hovers over it. The class "AccordionPanelTabHover" is programatically added
+ * and removed from panel tab containers as the mouse enters and exits the tab container.
+ */
+.AccordionPanelTabHover {
+  color: #fff; }
+
+.AccordionPanelOpen .AccordionPanelTabHover {
+  color: #fff; }
+
+/* This is an example of how to change the appearance of all the panel tabs when the
+ * Accordion has focus. The "AccordionFocused" class is programatically added and removed
+ * whenever the Accordion gains or loses keyboard focus.
+ */
+.AccordionFocused .AccordionPanelTab {
+  /*background-color: #3399FF;*/ }
+
+/* This is an example of how to change the appearance of the panel tab that is
+ * currently open when the Accordion has focus.
+ */
+.AccordionFocused .AccordionPanelOpen .AccordionPanelTab {
+  /*background-color: #33CCFF;*/ }
+
+/* Rules for Printing */
+@media print {
+  .Accordion {
+    overflow: visible !important; }
+
+  .AccordionPanelContent {
+    display: block !important;
+    overflow: visible !important;
+    height: auto !important; } }
+/* end of PEH2 code */
+/**
+ * Non-semantic helper classes: please define your styles before this section.
+ */
+/* For image replacement */
+.ir {
+  display: block;
+  text-indent: -999em;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr; }
+
+/* Hide for both screenreaders and browsers:
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden {
+  display: none;
+  visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: by Jon Neal.
+  www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: drupal.org/node/897638 */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible {
+  visibility: hidden; }
+
+/* The Magnificent Clearfix: Updated to prevent margin-collapsing on child elements.
+   j.mp/bestclearfix */
+.clearfix:before, .clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden; }
+
+.clearfix:after {
+  clear: both; }
+
+/* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+.clearfix {
+  zoom: 1; }
+
+/**
+ * Media queries for responsive design.
+ *
+ * These follow after primary styles so they will successfully override.
+ */
+@media all and (orientation: portrait) {
+  /* Style adjustments for portrait mode goes here */ }
+@media all and (orientation: landscape) {
+  /* Style adjustments for landscape mode goes here */ }
+/* Grade-A Mobile Browsers (Opera Mobile, Mobile Safari, Android Chrome)
+   consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (max-device-width: 480px) {
+  /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you: j.mp/textsizeadjust */
+  /* html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */ }
+/**
+ * Print styles.
+ *
+ * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+ */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important; }
+
+  /* Black prints faster: sanbeiji.com/archives/953 */
+  a, a:visited {
+    color: #444 !important;
+    text-decoration: underline; }
+
+  a[href]:after {
+    content: " (" attr(href) ")"; }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")"; }
+
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: ""; }
+
+  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid; }
+
+  thead {
+    display: table-header-group; }
+
+  /* css-discuss.incutio.com/wiki/Printing_Tables */
+  tr, img {
+    page-break-inside: avoid; }
+
+  @page {
+    margin: 0.5cm; }
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3; }
+
+  h2, h3 {
+    page-break-after: avoid; } }
+
+/*# sourceMappingURL=checkout-later.css.map */

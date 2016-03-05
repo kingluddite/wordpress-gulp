@@ -1,0 +1,25 @@
+/**
+ * Primary styles
+ *
+ * Author: PEH2
+ */
+
+@import "variables";
+@import "bug-fixes";
+@import "general";
+@import "navigation";
+@import "header";
+.main-content {
+    background-color: $secondary-color;
+}
+
+.main-content h1 {
+    background: $secondary-color url(../img/heading_welcome_bhs.png) no-repeat;
+    color: $black;
+}
+
+@import "aside";
+@import "footer";
+@import "miscellaneous";
+@import "media-queries";
+@import "print";

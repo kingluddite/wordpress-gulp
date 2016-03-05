@@ -1,0 +1,70 @@
+aside h2.since1973 {
+    // background: transparent url(../img/heading_since_1973.png) no-repeat;
+    // width: 152px;
+    // height: 42px;
+    // margin: 16px 10px 0 140px;
+    // padding: 10px;
+    // position: inherit;
+}
+article.facebook-entry {
+    background: $secondary-color url(../img/bg_facebook_post.png) no-repeat;
+    // width: 297px;
+    height: 321px;
+    // float: right;
+    margin-top: 5px;
+}
+
+article.facebook-entry h3 {
+    background: $secondary-color url(../img/header_facebook.png) no-repeat;
+    // width: 293px;
+    // height: 43px;
+    // margin-top: 50px;
+}
+
+article.facebook-entry h4 {
+    color: $mine-shaft;
+    // padding-left: 30px;
+    // padding-top: 5px;
+}
+
+article.facebook-entry h5 {
+    color: $sea-buckthorn;
+    // padding-left: 30px;
+    // padding-top: 10px;
+}
+
+article.facebook-entry h5 span {
+    color: $cloud;
+}
+
+article.facebook-entry p {
+    // padding-left: 30px;
+    // padding-top: 10px;
+    // font-size: 11px;
+    // padding-right: 30px;
+}
+
+ul.side-nav li {
+    background: orange; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(orange, #f59211); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(orange, #f59211); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(orange, #f59211); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(orange, #f59211); /* Standard syntax (must be last) */
+    padding: 10px;
+    margin-bottom: 1px;
+}
+
+ul.side-nav li a {
+    color: #fff;
+    font-size: 16px;
+}
+
+.dateText { color: #f99b15; }
+
+.authorText { color: #e4e2e3; }
+
+.sidebar-background {
+    /*background-color: yellow;*/
+    box-shadow: -3px 3px 10px rgba(0,0,0,0.2);
+    padding: 0px;
+}

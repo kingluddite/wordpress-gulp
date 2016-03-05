@@ -1,0 +1,168 @@
+
+/* TOP NAV */
+
+.top-nav {
+    font-size: .9em;
+    padding-left: 95px;
+    width: 347px;
+
+    li {
+      padding-top: 25px;
+      float: left;
+    }
+
+    span {
+      padding: 0 10px;
+    }
+
+    a {
+      color: $secondary-color;
+      text-decoration: none;
+    }
+}
+
+
+/* MAIN NAV */
+
+nav {
+    height: 72px;
+    background: $dove-gray url(../img/header_bg.png) no-repeat;
+
+    ul li {
+      list-style: none;
+      float: left;
+      color: $secondary-color;
+    }
+
+    ul {
+      font-size: 11px;
+    }
+
+    .nav-home a {
+        position: absolute;
+        left: 105px;
+        top: 75px;
+        display: block;
+        width: 100px;
+        padding: 10px;
+        text-align: center;
+    }
+    .nav-about a {
+        position: absolute;
+        left: 240px;
+        top: 75px;
+        display: block;
+        width: 100px;
+        padding: 10px;
+        text-align: center;
+    }
+    .nav-service a {
+        position: absolute;
+        left: 385px;
+        top: 75px;
+        display: block;
+        width: 100px;
+        padding: 10px;
+        text-align: center;
+    }
+    .nav-addict a {
+        position: absolute;
+        left: 505px;
+        top: 75px;
+        display: block;
+        width: 160px;
+        padding: 10px;
+        text-align: center;
+        .ie9 & {
+          left: 535px;
+        }
+    }
+    .nav-appoint a {
+        position: absolute;
+        left: 655px;
+        top: 75px;
+        display: block;
+        width: 150px;
+        padding: 10px;
+        text-align: center;
+        .ie9 & {
+          left: 673px;
+        }
+    }
+
+    .nav-contact a {
+        position: absolute;
+        left: 790px;
+        top: 75px;
+        display: block;
+        width: 150px;
+        padding: 10px;
+        text-align: center;
+    }
+    a {
+      color: $abbey;
+      text-decoration: none;
+      display: block;
+      &:hover {
+        color: $abbey;
+        letter-spacing: 0;
+      }
+    }
+}
+
+/*
+nav {
+    height: 72px;
+    background: #666666 url(../img/header_bg.png) repeat;
+    margin-top: -13px;
+}
+
+nav ul li {
+    list-style: none;
+    color: #ffffff;
+}
+
+nav ul {
+    font-size: 11px;
+}
+
+nav .nav-home a {
+    position: absolute;
+    left: 115px;
+    top: 70px;
+    display: block;
+    width: 100px;
+    padding: 10px;
+    text-align: center;
+}
+
+nav .nav-about a {
+    position: absolute;
+    left: 252px;
+    top: 70px;
+    display: block;
+    width: 100px;
+    padding: 10px;
+    text-align: center;
+}
+
+nav .nav-service a {
+    position: absolute;
+    left: 396px;
+    top: 70px;
+    display: block;
+    width: 100px;
+    padding: 10px;
+    text-align: center;
+}
+
+nav .nav-addict a {
+    position: absolute;
+    left: 513px;
+    top: 70px;
+    display: block;
+    width: 160px;
+    padding: 10px;
+    text-align: center;
+}
+*/
