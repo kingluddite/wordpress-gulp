@@ -10,7 +10,7 @@ var project             = 'BHS'; // Name
 
 var styleSRC            = './assets/scss/style.scss'; // Path to main .scss file
 var styleDestination    = './assets/css/'; // Path to place the compiled CSS file
-// Defualt set to root folder
+// Default set to root folder
 var styleMapDestination    = './'; // Path to place the compiled CSS file
 var venderStyleSRC = ['./node_modules/normalize.css/normalize.css', './node_modules/bootstrap/dist/css/bootstrap.css'];
 var venderStyleDestination = './assets/css/';
@@ -66,7 +66,7 @@ gulp.task('browser-sync', function() {
     browserSync.init(files, {
 
         // Read here http://www.browsersync.io/docs/options/
-        proxy: 'http://localhost/politics',
+        proxy: 'http://localhost/phil-test',
 
         // port: 8080,
 
