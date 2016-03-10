@@ -8,26 +8,26 @@
 
 var project             = 'BHS'; // Name
 
-var styleSRC            = './assets/scss/style.scss'; // Path to main .scss file
-var styleDestination    = './assets/css/'; // Path to place the compiled CSS file
+var styleSRC            = './assets/src/scss/style.scss'; // Path to main .scss file
+var styleDestination    = './assets/dest/css/'; // Path to place the compiled CSS file
 // Default set to root folder
-var styleMapDestination    = './'; // Path to place the compiled CSS file
+var styleMapDestination    = './maps'; // Path to place the compiled CSS file
 var venderStyleSRC = ['./node_modules/normalize.css/normalize.css', './node_modules/bootstrap/dist/css/bootstrap.css'];
-var venderStyleDestination = './assets/css/';
+var venderStyleDestination = './assets/dest/css/';
 var jsVendorSRC         = './node_modules/jquery/dist/jquery.js'; // Path to JS vendors folder
-var jsVendorDestination = './assets/js/'; // Path to place the compiled JS vendors file
+var jsVendorDestination = './assets/js/vendors/'; // Path to place the compiled JS vendors file
 var jsVendorFile        = 'vendors'; // Compiled JS vendors file name
 // Default set to vendors i.e. vendors.js
 
 
-var jsCustomSRC         = './assets/js/custom/*.js'; // Path to JS custom scripts folder
-var jsCustomDestination = './assets/js/'; // Path to place the compiled JS custom scripts file
+var jsCustomSRC         = './assets/src/js/custom/*.js'; // Path to JS custom scripts folder
+var jsCustomDestination = './assets/dest/js/'; // Path to place the compiled JS custom scripts file
 var jsCustomFile        = 'custom'; // Compiled JS custom file name
 // Default set to custom i.e. custom.js
 
-var styleWatchFiles     = './assets/scss/**/*.scss'; // Path to all *.scss files inside css folder and inside them
+var styleWatchFiles     = './assets/src/scss/**/*.scss'; // Path to all *.scss files inside css folder and inside them
 //var vendorJSWatchFiles  = './assets/js/vendors/*.js'; // Path to all vendors JS files
-var customJSWatchFiles  = './assets/js/custom/*.js'; // Path to all custom JS files
+var customJSWatchFiles  = './assets/src/js/custom/*.js'; // Path to all custom JS files
 
 /**
  * Load Plugins.
@@ -48,8 +48,11 @@ var gulp         = require('gulp'), // Gulp of-course
     uglify       = require('gulp-uglify'), // Minifies JS files
 
     // Utility related plugins.
+    imagemin     = require('gulp-imagemin'), // Minifies PNG, JPEG, GIF and SVG images
+    plumber      = require('gulp-plumber'), // Fix node pipes, prevent them from breaking due to an error
     rename       = require('gulp-rename'), // Renames files E.g. style.css -> style.min.css
     sourcemaps   = require('gulp-sourcemaps'), // Maps code in a compressed file (E.g. style.css) back to it’s original position in a source file (E.g. structure.scss, which was later combined with other css files to generate style.css)
+
     notify       = require('gulp-notify'); // Sends message notification to you
 
 /**
@@ -66,9 +69,9 @@ gulp.task('browser-sync', function() {
     browserSync.init(files, {
 
         // Read here http://www.browsersync.io/docs/options/
-        proxy: 'http://localhost/phil-test',
+        proxy: 'http://localhost/phil-quiz',
 
-        // port: 8080,
+        port: 8080,
 
         // Tunnel the Browsersync server through a random Public URL
         // tunnel: true,
@@ -97,6 +100,7 @@ gulp.task('browser-sync', function() {
  */
 gulp.task('styles', function () {
     gulp.src( styleSRC )
+        .pipe(plumber())
         .pipe( sourcemaps.init() )
         .pipe( sass( {
             errLogToConsole: true,
@@ -105,7 +109,7 @@ gulp.task('styles', function () {
             // outputStyle: 'nested',
             // outputStyle: 'expanded',
             precision: 10
-        } ) )
+        }))
         .pipe( sourcemaps.write( { includeContent: false } ) )
         .pipe( sourcemaps.init( { loadMaps: true } ) )
         .pipe( autoprefixer(
@@ -117,8 +121,8 @@ gulp.task('styles', function () {
             'opera 12.1',
             'ios 6',
             'android 4' ) )
-
         .pipe( sourcemaps.write ( styleMapDestination ) )
+        .pipe(plumber.stop())
         .pipe( gulp.dest( styleDestination ) )
 
 
