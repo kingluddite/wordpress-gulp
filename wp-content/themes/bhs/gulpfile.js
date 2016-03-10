@@ -9,13 +9,13 @@
 var project             = 'BHS'; // Name
 
 var styleSRC            = './assets/src/scss/style.scss'; // Path to main .scss file
-var styleDestination    = './assets/dest/css/'; // Path to place the compiled CSS file
+var styleDestination    = './'; // Path to place the compiled CSS file
 // Default set to root folder
 var styleMapDestination    = './maps'; // Path to place the compiled CSS file
 var venderStyleSRC = ['./node_modules/normalize.css/normalize.css', './node_modules/bootstrap/dist/css/bootstrap.css'];
 var venderStyleDestination = './assets/dest/css/';
 var jsVendorSRC         = './node_modules/jquery/dist/jquery.js'; // Path to JS vendors folder
-var jsVendorDestination = './assets/js/vendors/'; // Path to place the compiled JS vendors file
+var jsVendorDestination = './assets/dest/js/vendors/'; // Path to place the compiled JS vendors file
 var jsVendorFile        = 'vendors'; // Compiled JS vendors file name
 // Default set to vendors i.e. vendors.js
 
@@ -24,6 +24,11 @@ var jsCustomSRC         = './assets/src/js/custom/*.js'; // Path to JS custom sc
 var jsCustomDestination = './assets/dest/js/'; // Path to place the compiled JS custom scripts file
 var jsCustomFile        = 'custom'; // Compiled JS custom file name
 // Default set to custom i.e. custom.js
+
+// images
+
+var imgSRC             = '/assets/src/img/'; // Path to raw images
+var imgDest            = '/assets/dest/img/'; // Where optimized images go
 
 var styleWatchFiles     = './assets/src/scss/**/*.scss'; // Path to all *.scss files inside css folder and inside them
 //var vendorJSWatchFiles  = './assets/js/vendors/*.js'; // Path to all vendors JS files
@@ -42,6 +47,8 @@ var gulp         = require('gulp'), // Gulp of-course
     autoprefixer = require('gulp-autoprefixer'), // Autoprefixing magic
     concatCss    = require('gulp-concat-css'), // concat css
     minifycss    = require('gulp-uglifycss'), // Minifies CSS files
+    filter       = require('gulp-filter'), // Enables you to work on a subset of the original files by filtering them using globbing
+    cmq          = require('gulp-combine-media-queries'),
 
     // JS related plugins.
     concat       = require('gulp-concat'), // Concatenates JS files
@@ -49,6 +56,7 @@ var gulp         = require('gulp'), // Gulp of-course
 
     // Utility related plugins.
     imagemin     = require('gulp-imagemin'), // Minifies PNG, JPEG, GIF and SVG images
+    newer        = require('gulp-newer'), // For passing through only those source files that are newer than corresponding destination files
     plumber      = require('gulp-plumber'), // Fix node pipes, prevent them from breaking due to an error
     rename       = require('gulp-rename'), // Renames files E.g. style.css -> style.min.css
     sourcemaps   = require('gulp-sourcemaps'), // Maps code in a compressed file (E.g. style.css) back to it’s original position in a source file (E.g. structure.scss, which was later combined with other css files to generate style.css)
@@ -83,6 +91,22 @@ gulp.task('browser-sync', function() {
         injectChanges: true
 
     });
+});
+
+/**
+ * Images
+ *
+ * Look at src/images, optimize the images and send them to the appropriate place
+*/
+gulp.task('images', function() {
+
+// Add the newer pipe to pass through newer images only
+    return  gulp.src(['./assets/src/img/**/*.{png,jpg,gif}'])
+                .pipe(newer('./assets/dest/img/'))
+                .pipe(rimraf({ force: true }))
+                .pipe(imagemin({ optimizationLevel: 7, progressive: true, interlaced: true }))
+                .pipe(gulp.dest('./assets/img/'))
+                .pipe( notify( { message: 'Images task complete', onLast: true } ) );
 });
 
 /**
@@ -123,6 +147,8 @@ gulp.task('styles', function () {
             'android 4' ) )
         .pipe( sourcemaps.write ( styleMapDestination ) )
         .pipe(plumber.stop())
+        .pipe(filter('**/*.css')) // Filtering stream to only css files
+        .pipe(cmq()) // Combines Media Queries
         .pipe( gulp.dest( styleDestination ) )
 
 
