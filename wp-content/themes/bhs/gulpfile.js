@@ -8,26 +8,31 @@
 
 var project             = 'BHS'; // Name
 
-var styleSRC            = './assets/scss/style.scss'; // Path to main .scss file
-var styleDestination    = './assets/css/'; // Path to place the compiled CSS file
-// Defualt set to root folder
-var styleMapDestination    = './'; // Path to place the compiled CSS file
+var styleSRC            = './assets/src/scss/style.scss'; // Path to main .scss file
+var styleDestination    = './'; // Path to place the compiled CSS file
+// Default set to root folder
+var styleMapDestination    = './maps'; // Path to place the compiled CSS file
 var venderStyleSRC = ['./node_modules/normalize.css/normalize.css', './node_modules/bootstrap/dist/css/bootstrap.css'];
-var venderStyleDestination = './assets/css/';
+var venderStyleDestination = './assets/dest/css/';
 var jsVendorSRC         = './node_modules/jquery/dist/jquery.js'; // Path to JS vendors folder
-var jsVendorDestination = './assets/js/'; // Path to place the compiled JS vendors file
+var jsVendorDestination = './assets/dest/js/vendors/'; // Path to place the compiled JS vendors file
 var jsVendorFile        = 'vendors'; // Compiled JS vendors file name
 // Default set to vendors i.e. vendors.js
 
 
-var jsCustomSRC         = './assets/js/custom/*.js'; // Path to JS custom scripts folder
-var jsCustomDestination = './assets/js/'; // Path to place the compiled JS custom scripts file
+var jsCustomSRC         = './assets/src/js/custom/*.js'; // Path to JS custom scripts folder
+var jsCustomDestination = './assets/dest/js/'; // Path to place the compiled JS custom scripts file
 var jsCustomFile        = 'custom'; // Compiled JS custom file name
 // Default set to custom i.e. custom.js
 
-var styleWatchFiles     = './assets/scss/**/*.scss'; // Path to all *.scss files inside css folder and inside them
+// images
+
+var imgSRC             = '/assets/src/img/'; // Path to raw images
+var imgDest            = '/assets/dest/img/'; // Where optimized images go
+
+var styleWatchFiles     = './assets/src/scss/**/*.scss'; // Path to all *.scss files inside css folder and inside them
 //var vendorJSWatchFiles  = './assets/js/vendors/*.js'; // Path to all vendors JS files
-var customJSWatchFiles  = './assets/js/custom/*.js'; // Path to all custom JS files
+var customJSWatchFiles  = './assets/src/js/custom/*.js'; // Path to all custom JS files
 
 /**
  * Load Plugins.
@@ -36,20 +41,29 @@ var customJSWatchFiles  = './assets/js/custom/*.js'; // Path to all custom JS fi
  */
 var gulp         = require('gulp'), // Gulp of-course
     browserSync  = require('browser-sync'), // Asynchronous browser loading on .scss file changes
+    reload       = browserSync.reload,
 
     // CSS related plugins.
     sass         = require('gulp-sass'), // Gulp pluign for Sass compilation
     autoprefixer = require('gulp-autoprefixer'), // Autoprefixing magic
     concatCss    = require('gulp-concat-css'), // concat css
     minifycss    = require('gulp-uglifycss'), // Minifies CSS files
+    filter       = require('gulp-filter'), // Enables you to work on a subset of the original files by filtering them using globbing
+    cmq          = require('gulp-combine-media-queries'),
 
     // JS related plugins.
     concat       = require('gulp-concat'), // Concatenates JS files
     uglify       = require('gulp-uglify'), // Minifies JS files
 
     // Utility related plugins.
+    rimraf       = require('gulp-rimraf'), // Helps with removing files and directories in our run tasks
+    imagemin     = require('gulp-imagemin'), // Minifies PNG, JPEG, GIF and SVG images
+    newer        = require('gulp-newer'), // For passing through only those source files that are newer than corresponding destination files
+    plumber      = require('gulp-plumber'), // Fix node pipes, prevent them from breaking due to an error
     rename       = require('gulp-rename'), // Renames files E.g. style.css -> style.min.css
     sourcemaps   = require('gulp-sourcemaps'), // Maps code in a compressed file (E.g. style.css) back to it’s original position in a source file (E.g. structure.scss, which was later combined with other css files to generate style.css)
+    cache        = require('gulp-cache'),
+
     notify       = require('gulp-notify'); // Sends message notification to you
 
 /**
@@ -66,9 +80,9 @@ gulp.task('browser-sync', function() {
     browserSync.init(files, {
 
         // Read here http://www.browsersync.io/docs/options/
-        proxy: 'http://localhost/politics',
+        proxy: 'http://localhost/tennis',
 
-        // port: 8080,
+        port: 8080,
 
         // Tunnel the Browsersync server through a random Public URL
         // tunnel: true,
@@ -80,6 +94,22 @@ gulp.task('browser-sync', function() {
         injectChanges: true
 
     });
+});
+
+/**
+ * Images
+ *
+ * Look at src/images, optimize the images and send them to the appropriate place
+*/
+gulp.task('images', function() {
+
+// Add the newer pipe to pass through newer images only
+    return  gulp.src(['./assets/src/img/**/*.{png,jpg,gif}'])
+                .pipe(newer('./assets/dest/img/'))
+                .pipe(rimraf({ force: true }))
+                .pipe(imagemin({ optimizationLevel: 7, progressive: true, interlaced: true }))
+                .pipe(gulp.dest('./assets/dest/img/'))
+                .pipe( notify( { message: 'Images task complete', onLast: true } ) );
 });
 
 /**
@@ -97,6 +127,7 @@ gulp.task('browser-sync', function() {
  */
 gulp.task('styles', function () {
     gulp.src( styleSRC )
+        .pipe(plumber())
         .pipe( sourcemaps.init() )
         .pipe( sass( {
             errLogToConsole: true,
@@ -105,7 +136,7 @@ gulp.task('styles', function () {
             // outputStyle: 'nested',
             // outputStyle: 'expanded',
             precision: 10
-        } ) )
+        }))
         .pipe( sourcemaps.write( { includeContent: false } ) )
         .pipe( sourcemaps.init( { loadMaps: true } ) )
         .pipe( autoprefixer(
@@ -117,8 +148,11 @@ gulp.task('styles', function () {
             'opera 12.1',
             'ios 6',
             'android 4' ) )
-
         .pipe( sourcemaps.write ( styleMapDestination ) )
+        .pipe(plumber.stop())
+        .pipe(filter('**/*.css')) // Filtering stream to only css files
+        .pipe(cmq()) // Combines Media Queries
+        .pipe(reload({stream:true})) // Inject Styles when style file is created
         .pipe( gulp.dest( styleDestination ) )
 
 
@@ -147,6 +181,7 @@ gulp.task('venderCss', function () {
             maxLineLen: 10
         }))
         .pipe( gulp.dest( venderStyleDestination ) )
+        .pipe(reload({stream:true})) // Inject Styles when style file is created
         .pipe( notify( { message: 'TASK: "vender styles" Completed!', onLast: true } ) )
 });
 
@@ -199,13 +234,21 @@ gulp.task( 'customJS', function() {
 });
 
 /**
+ * Clean gulp cache
+ */
+ gulp.task('clear', function () {
+   cache.clearAll();
+ });
+
+/**
   * Watch Tasks.
   *
   * Watches for file changes and runs specific tasks.
   */
 
- gulp.task( 'default', [ 'styles', 'venderCss', 'vendorsJs', 'customJS', 'browser-sync' ], function () {
-    gulp.watch( './assets/css/**/*.scss', [ 'styles' ] );
-    gulp.watch( './assets/js/vendors/*.js', [ 'vendorsJs' ] );
-    gulp.watch( './assets/js/custom/*.js', [ 'customJS', browserSync.reload ] );
+ gulp.task( 'default', [ 'styles', 'venderCss', 'vendorsJs', 'customJS', 'images', 'browser-sync' ], function () {
+    gulp.watch( './assets/src/img/**/*', ['images'] );
+    gulp.watch( './assets/src/scss/**/*.scss', [ 'styles' ] );
+    gulp.watch( './assets/src/js/vendors/*.js', [ 'vendorsJs' ] );
+    gulp.watch( './assets/src/js/custom/*.js', [ 'customJS', browserSync.reload ] );
  });
