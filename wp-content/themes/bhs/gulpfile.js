@@ -80,7 +80,9 @@ gulp.task('browser-sync', function() {
     browserSync.init(files, {
 
         // Read here http://www.browsersync.io/docs/options/
+
         proxy: 'http://localhost/tennis',
+
 
         port: 8080,
 
@@ -148,7 +150,8 @@ gulp.task('styles', function () {
             'opera 12.1',
             'ios 6',
             'android 4' ) )
-        .pipe( sourcemaps.write ( styleMapDestination ) )
+
+        .pipe( sourcemaps.write ( styleDestination ) )
         .pipe(plumber.stop())
         .pipe(filter('**/*.css')) // Filtering stream to only css files
         .pipe(cmq()) // Combines Media Queries
