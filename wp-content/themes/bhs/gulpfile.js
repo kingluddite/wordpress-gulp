@@ -41,6 +41,7 @@ var customJSWatchFiles  = './assets/src/js/custom/*.js'; // Path to all custom J
  */
 var gulp         = require('gulp'), // Gulp of-course
     browserSync  = require('browser-sync'), // Asynchronous browser loading on .scss file changes
+    reload       = browserSync.reload,
 
     // CSS related plugins.
     sass         = require('gulp-sass'), // Gulp pluign for Sass compilation
@@ -55,11 +56,13 @@ var gulp         = require('gulp'), // Gulp of-course
     uglify       = require('gulp-uglify'), // Minifies JS files
 
     // Utility related plugins.
+    rimraf       = require('gulp-rimraf'), // Helps with removing files and directories in our run tasks
     imagemin     = require('gulp-imagemin'), // Minifies PNG, JPEG, GIF and SVG images
     newer        = require('gulp-newer'), // For passing through only those source files that are newer than corresponding destination files
     plumber      = require('gulp-plumber'), // Fix node pipes, prevent them from breaking due to an error
     rename       = require('gulp-rename'), // Renames files E.g. style.css -> style.min.css
     sourcemaps   = require('gulp-sourcemaps'), // Maps code in a compressed file (E.g. style.css) back to it’s original position in a source file (E.g. structure.scss, which was later combined with other css files to generate style.css)
+    cache        = require('gulp-cache'),
 
     notify       = require('gulp-notify'); // Sends message notification to you
 
@@ -105,7 +108,7 @@ gulp.task('images', function() {
                 .pipe(newer('./assets/dest/img/'))
                 .pipe(rimraf({ force: true }))
                 .pipe(imagemin({ optimizationLevel: 7, progressive: true, interlaced: true }))
-                .pipe(gulp.dest('./assets/img/'))
+                .pipe(gulp.dest('./assets/dest/img/'))
                 .pipe( notify( { message: 'Images task complete', onLast: true } ) );
 });
 
@@ -145,10 +148,11 @@ gulp.task('styles', function () {
             'opera 12.1',
             'ios 6',
             'android 4' ) )
-        .pipe( sourcemaps.write ( styleMapDestination ) )
+        .pipe( sourcemaps.write ( styleDestination ) )
         .pipe(plumber.stop())
         .pipe(filter('**/*.css')) // Filtering stream to only css files
         .pipe(cmq()) // Combines Media Queries
+        .pipe(reload({stream:true})) // Inject Styles when style file is created
         .pipe( gulp.dest( styleDestination ) )
 
 
@@ -177,6 +181,7 @@ gulp.task('venderCss', function () {
             maxLineLen: 10
         }))
         .pipe( gulp.dest( venderStyleDestination ) )
+        .pipe(reload({stream:true})) // Inject Styles when style file is created
         .pipe( notify( { message: 'TASK: "vender styles" Completed!', onLast: true } ) )
 });
 
@@ -229,13 +234,21 @@ gulp.task( 'customJS', function() {
 });
 
 /**
+ * Clean gulp cache
+ */
+ gulp.task('clear', function () {
+   cache.clearAll();
+ });
+
+/**
   * Watch Tasks.
   *
   * Watches for file changes and runs specific tasks.
   */
 
- gulp.task( 'default', [ 'styles', 'venderCss', 'vendorsJs', 'customJS', 'browser-sync' ], function () {
-    gulp.watch( './assets/css/**/*.scss', [ 'styles' ] );
-    gulp.watch( './assets/js/vendors/*.js', [ 'vendorsJs' ] );
-    gulp.watch( './assets/js/custom/*.js', [ 'customJS', browserSync.reload ] );
+ gulp.task( 'default', [ 'styles', 'venderCss', 'vendorsJs', 'customJS', 'images', 'browser-sync' ], function () {
+    gulp.watch( './assets/src/img/**/*', ['images'] );
+    gulp.watch( './assets/src/scss/**/*.scss', [ 'styles' ] );
+    gulp.watch( './assets/src/js/vendors/*.js', [ 'vendorsJs' ] );
+    gulp.watch( './assets/src/js/custom/*.js', [ 'customJS', browserSync.reload ] );
  });
