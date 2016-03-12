@@ -24,10 +24,10 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 cert-logos">
-                                        <a href="#"><img src="<?php bloginfo('template_url'); ?>/assets/img/adp_cert_logo.png" alt="adp certification logo"></a>
+                                        <a href="#"><img src="<?php bloginfo('template_url'); ?>/assets/dest/img/adp_cert_logo.png" alt="adp certification logo"></a>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 cert-logos">
-                                        <a href="#"><img src="<?php bloginfo('template_url'); ?>/assets/img/cart_cert_logo.png" alt="cart certification logo"></a>
+                                        <a href="#"><img src="<?php bloginfo('template_url'); ?>/assets/dest/img/cart_cert_logo.png" alt="cart certification logo"></a>
                                     </div>
                                 </div>
                             </div>

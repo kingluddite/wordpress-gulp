@@ -2,7 +2,7 @@ footer {
     margin: 10px 0;
     color: $cloud;
     text-align: center;
-    background: url(../img/top_footer_bg.png) no-repeat;
+    background: url(assets/dest/img/top_footer_bg.png) no-repeat;
     height: 138px;
     clear: both;
     webkit-box-shadow: 5px 5px 25px $black;
@@ -37,17 +37,17 @@ footer {
         }
         // END logos footer
         .about-us-heading {
-            background: $primary-color url(../img/bg_about_us.png) no-repeat;
+            background: $primary-color url(assets/dest/img/bg_about_us.png) no-repeat;
             width: 166px;
             height: 30px;
         }
         .services-heading {
-            background: $primary-color url(../img/bg_heading_services.jpg) no-repeat;
+            background: $primary-color url(assets/dest/img/bg_heading_services.jpg) no-repeat;
             width: 166px;
             height: 30px;
         }
         .wtgi-heading {
-            background: $primary-color url(../img/bg_heading_ways_tgi.png) no-repeat;
+            background: $primary-color url(assets/dest/img/bg_heading_ways_tgi.png) no-repeat;
             width: 166px;
             height: 30px;
         }

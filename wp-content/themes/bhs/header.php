@@ -31,23 +31,23 @@
                     <header>
                         <div class="misc-items">
                             <ul class="top-nav">
-                                <li><a href="index.html">Home</a> <span> | </span> </li>
-                                <li><a href="about_us.html">About Us</a> <span> | </span> </li>
+                                <li><a href="http://localhost/tennis">Home</a> <span> | </span> </li>
+                                <li><a href="http://localhost/tennis/about-me">About Us</a> <span> | </span> </li>
                                 <li><a href="faq.html">FAQ</a> <span> | </span> </li>
                                 <li><a href="contact.html">Contact</a> </li>
                             </ul>
-                            <a href="#" class="facebook-link"><img class="facebook-icon" src="<?php bloginfo('template_url'); ?>/assets/img/icon_facebook.png" width="136" height="40" alt="Facebook Icon"></a>
+                            <a href="#" class="facebook-link"><img class="facebook-icon" src="<?php bloginfo('template_url'); ?>/assets/dest/img/icon_facebook.png" width="136" height="40" alt="Facebook Icon"></a>
                             <div class="search-container">
                                 <form class="search-form" method="get" action="#">
                                     <input class="search-input" type="text" onFocus="this.value=(this.value=='Search...')? '' : this.value ;" value="Search..." name="search">
-                                    <input class="search-submit" type="image" value="Search" src="<?php bloginfo('template_url'); ?>/assets/img/btn_search.gif">
+                                    <input class="search-submit" type="image" value="Search" src="<?php bloginfo('template_url'); ?>/assets/dest/img/btn_search.gif">
                                 </form>
                             </div>
                             <!-- END .search-container -->
-                            <a class="donate" target="_blank" href="#"> <img width="199" height="34" alt="Donate" src="<?php bloginfo('template_url'); ?>/assets/img/button_donate.png"> </a>
+                            <a class="donate" target="_blank" href="#"> <img width="199" height="34" alt="Donate" src="<?php bloginfo('template_url'); ?>/assets/dest/img/button_donate.png"> </a>
                         </div>
                         <!-- END .misc-items -->
-                        <a href="index.html"><img src="<?php bloginfo('template_url'); ?>/assets/img/bhs_logo.png" alt="BHS Logo" width="121" height="121" class="logo"></a>
+                        <a href="http://localhost/tennis"><img src="<?php bloginfo('template_url'); ?>/assets/dest/img/bhs_logo.png" alt="BHS Logo" width="121" height="121" class="logo"></a>
                         <nav>
                             <ul class="main-nav">
                                 <li class="nav-home"><a href="index.html">HOME</a></li>
