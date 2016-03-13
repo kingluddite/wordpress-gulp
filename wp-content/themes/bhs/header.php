@@ -1,29 +1,19 @@
-<?php
-/**
- * The template for displaying the header
- *
- * Displays all of the head element and everything up until the "site-content" div.
- *
- */
-
-?>
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-
+<html <?php language_attributes(); ?> class="no-js">
     <head>
-        <meta charset="utf-8">
+        <meta charset="<?php bloginfo('charset'); ?>">
+        <title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
+        <link href="//www.google-analytics.com" rel="dns-prefetch">
+        <link href="<?php echo get_template_directory_uri(); ?>/img/icons/favicon.ico" rel="shortcut icon">
+        <link href="<?php echo get_template_directory_uri(); ?>/img/icons/touch.png" rel="apple-touch-icon-precomposed">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>BHS</title>
-        <!-- <base href="/"> -->
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+        <meta name="description" content="<?php bloginfo('description'); ?>">
 
-<?php wp_head(); ?>
+        <?php wp_head(); ?>
 </head>
 
-    <body class="my-about-page">
+    <body <?php body_class(); ?>>
         <div class="container">
             <!-- END header -->
             <div class="content-container" class="clearfix">
@@ -31,23 +21,20 @@
                     <header>
                         <div class="misc-items">
                             <ul class="top-nav">
-                                <li><a href="http://localhost/tennis">Home</a> <span> | </span> </li>
-                                <li><a href="http://localhost/tennis/about-me">About Us</a> <span> | </span> </li>
+                                <li><a href="<?php echo home_url(); ?>">Home</a> <span> | </span> </li>
+                                <li><a href="http://localhost/soccer/about">About Us</a> <span> | </span> </li>
                                 <li><a href="faq.html">FAQ</a> <span> | </span> </li>
                                 <li><a href="contact.html">Contact</a> </li>
                             </ul>
-                            <a href="#" class="facebook-link"><img class="facebook-icon" src="<?php bloginfo('template_url'); ?>/assets/dest/img/icon_facebook.png" width="136" height="40" alt="Facebook Icon"></a>
+                            <a href="#" class="facebook-link"><img class="facebook-icon" src="<?php echo get_template_directory_uri(); ?>/assets/dest/img/icon_facebook.png" width="136" height="40" alt="Facebook Icon"></a>
                             <div class="search-container">
-                                <form class="search-form" method="get" action="#">
-                                    <input class="search-input" type="text" onFocus="this.value=(this.value=='Search...')? '' : this.value ;" value="Search..." name="search">
-                                    <input class="search-submit" type="image" value="Search" src="<?php bloginfo('template_url'); ?>/assets/dest/img/btn_search.gif">
-                                </form>
+                                <?php get_template_part('searchform'); ?>
                             </div>
                             <!-- END .search-container -->
-                            <a class="donate" target="_blank" href="#"> <img width="199" height="34" alt="Donate" src="<?php bloginfo('template_url'); ?>/assets/dest/img/button_donate.png"> </a>
+                            <a class="donate" target="_blank" href="#"> <img width="199" height="34" alt="Donate" src="<?php echo get_template_directory_uri(); ?>/assets/dest/img/button_donate.png"> </a>
                         </div>
                         <!-- END .misc-items -->
-                        <a href="http://localhost/tennis"><img src="<?php bloginfo('template_url'); ?>/assets/dest/img/bhs_logo.png" alt="BHS Logo" width="121" height="121" class="logo"></a>
+                        <a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/dest/img/bhs_logo.png" alt="BHS Logo" width="121" height="121" class="logo"></a>
                         <nav>
                             <ul class="main-nav">
                                 <li class="nav-home"><a href="index.html">HOME</a></li>
@@ -65,3 +52,6 @@
                         <li><a href="about_us.html">About Us</a></li>
                         <li><a href="#" class="current-page">Mission, Vision, Values</a></li>
                     </ol>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">

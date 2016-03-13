@@ -81,7 +81,7 @@ gulp.task('browser-sync', function() {
 
         // Read here http://www.browsersync.io/docs/options/
 
-        proxy: 'http://localhost/tennis',
+        proxy: 'http://localhost/soccer',
 
 
         port: 8080,
