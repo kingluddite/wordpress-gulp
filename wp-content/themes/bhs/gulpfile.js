@@ -75,7 +75,9 @@ gulp.task('browser-sync', function() {
     browserSync.init(files, {
 
         // Read here http://www.browsersync.io/docs/options/
+
         proxy: 'http://localhost/phil-quiz',
+
 
         port: 8080,
 
