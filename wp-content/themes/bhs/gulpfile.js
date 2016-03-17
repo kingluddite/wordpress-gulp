@@ -11,7 +11,6 @@ var project             = 'BHS'; // Name
 var styleSRC            = './assets/src/scss/style.scss'; // Path to main .scss file
 var styleDestination    = './'; // Path to place the compiled CSS file
 // Default set to root folder
-var styleMapDestination    = './maps'; // Path to place the compiled CSS file
 var venderStyleSRC = ['./node_modules/normalize.css/normalize.css', './node_modules/bootstrap/dist/css/bootstrap.css'];
 var venderStyleDestination = './assets/dest/css/';
 var jsVendorSRC         = './node_modules/jquery/dist/jquery.js'; // Path to JS vendors folder
@@ -26,10 +25,6 @@ var jsCustomFile        = 'custom'; // Compiled JS custom file name
 // Default set to custom i.e. custom.js
 
 // images
-
-var imgSRC             = '/assets/src/img/'; // Path to raw images
-var imgDest            = '/assets/dest/img/'; // Where optimized images go
-
 var styleWatchFiles     = './assets/src/scss/**/*.scss'; // Path to all *.scss files inside css folder and inside them
 //var vendorJSWatchFiles  = './assets/js/vendors/*.js'; // Path to all vendors JS files
 var customJSWatchFiles  = './assets/src/js/custom/*.js'; // Path to all custom JS files
@@ -105,9 +100,7 @@ gulp.task('images', function() {
 
 // Add the newer pipe to pass through newer images only
     return  gulp.src(['./assets/src/img/**/*.{png,jpg,gif}'])
-                .pipe(newer('./assets/dest/img/'))
-                .pipe(rimraf({ force: true }))
-                .pipe(imagemin({ optimizationLevel: 7, progressive: true, interlaced: true }))
+                .pipe(imagemin({ progressive: true }))
                 .pipe(gulp.dest('./assets/dest/img/'))
                 .pipe( notify( { message: 'Images task complete', onLast: true } ) );
 });
@@ -148,19 +141,15 @@ gulp.task('styles', function () {
             'opera 12.1',
             'ios 6',
             'android 4' ) )
-        .pipe( sourcemaps.write ( styleDestination ) )
         .pipe(plumber.stop())
-        .pipe(filter('**/*.css')) // Filtering stream to only css files
-        .pipe(cmq()) // Combines Media Queries
-        .pipe(reload({stream:true})) // Inject Styles when style file is created
-        .pipe( gulp.dest( styleDestination ) )
-
 
         .pipe( rename( { suffix: '.min' } ) )
         .pipe( minifycss( {
             maxLineLen: 10
         }))
+        .pipe( sourcemaps.write ( styleDestination ) )
         .pipe( gulp.dest( styleDestination ) )
+        .pipe(browserSync.stream())
         .pipe( notify( { message: 'TASK: "styles" Completed!', onLast: true } ) )
 });
 
