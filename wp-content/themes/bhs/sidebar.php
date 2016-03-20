@@ -1,5 +1,6 @@
+</div><!-- END .col-8 -->
 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 sidebar-background">
-                                <img class="facebook-module" src="img/facebook_icon_buttons.png" alt="facebook placeholder buttons">
+                                <img class="facebook-module" src="<?php echo get_template_directory_uri(); ?>/assets/dest/img/facebook_icon_buttons.png" alt="facebook placeholder buttons">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <article class="my-facebook-entry" class="clearfix">
                                         <hgroup>
@@ -26,12 +27,12 @@
                                             <li><a href="ceo_message.html">CEO Message</a></li>
                                             <li><a href="philosophy">Philosophy</a></li>
                                             <li>
-                                                <a class="pdf-privacy" href="privacy_notice.html">Privacy Notice <img src="img/pdf_icon.png" alt="pdf of Privacy Notice" width="18" height="17"></a></li>
+                                                <a class="pdf-privacy" href="privacy_notice.html">Privacy Notice <img src="<?php echo get_template_directory_uri(); ?>/assets/dest/img/pdf_icon.png" alt="pdf of Privacy Notice" width="18" height="17"></a></li>
                                         </ul>
                                     </nav>
                                     <h2 class="get-involved-sidebar-heading">Get Involved</h2>
                                     <hr class="article-hr">
-                                    <div class="aside-box"><img src="img/get_involved_placeholder.png" alt="placeholder">
+                                    <div class="aside-box"><img src="<?php echo get_template_directory_uri(); ?>/assets/dest/img/get_involved_placeholder.png" alt="placeholder">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
                                             <br />
                                             <br /><a href="#">Click here for more information</a></p>
@@ -39,7 +40,7 @@
                                     <h2 class="success-stories-sidebar-heading">Success Stories</h2>
                                     <hr class="article-hr">
                                     <div class="aside-box">
-                                        <img src="img/success_stories_placeholder.png" alt="placeholder">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/dest/img/success_stories_placeholder.png" alt="placeholder">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
                                             <br />
                                             <br /> <a href="#">Click here for more information</a></p>
@@ -53,8 +54,6 @@
 
 <div class="sidebar-widget">
         <?php if(!function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-area-1')) ?>
-    </div>
-     </div>
-                            </div>
-                        </div>
-                    </div>
+    </div><!-- END .sidebar-widget -->
+     </div><!-- END .col-4 -->
+                            </div><!-- END .sidebar-background div col-12 -->
